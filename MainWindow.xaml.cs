@@ -17,19 +17,20 @@ namespace FileOpenSaveApplication
 {
     public partial class MainWindow : Window
     {
-        private List<Auto> autok = new();
+        static List<Auto> autok = new();
 
         public MainWindow()
         {
             InitializeComponent();
-            
+
+
         }
 
         private void Beolvas(string allomany)
         {
             try
             {
-                using (StreamReader olvas = new(allomany))
+                using (StreamReader olvas = new(allomany, Encoding.Default))
                 {
                     olvas.ReadLine();
                     string sor;
@@ -64,10 +65,30 @@ namespace FileOpenSaveApplication
             if (fileDialog.ShowDialog().Value)
             {
                 Beolvas(fileDialog.FileName);
+                lbAutok.Items.Clear();
+                lbAutok.ItemsSource = autok;
+
+                //dgAutok.Items.Clear();
+                //dgAutok.ItemsSource = autok;
             }
             else
             {
                 MessageBox.Show("Nincs kiválasztott állomány!");
+            }
+        }
+
+        private void lbAutok_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbAutok.SelectedItem != null)
+            {
+                Auto a = (Auto)lbAutok.SelectedItem;
+                tbkId.Text = a.Id.ToString();
+                tbkMarka.Text = a.Marka;
+                tbkTipus.Text = a.Tipus;
+                tbkSzin.Text = a.Szin;
+                tbkEvjarat.Text = a.Evjarat.ToString();
+                tbkMuszaki.Text = a.Muszaki.ToString();
+                cbxAktiv.IsChecked = a.Aktiv;
             }
         }
     }

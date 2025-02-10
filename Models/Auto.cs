@@ -41,6 +41,10 @@ namespace FileOpenSaveApplication.Models
             Aktiv = bool.Parse(Adatok[6]);
         }
 
+        public override string ToString()
+        {
+            return $"{Id}: {Marka}: {Tipus}";
+        }
 
     }
 }

@@ -12,13 +12,43 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-      
-        <Menu>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Menu Grid.ColumnSpan="2">
             <MenuItem Header="Beolvasás" Click="Beolvasas_Click" />
 
         </Menu>
-        
-        
-       
+
+        <ListBox x:Name="lbAutok" Grid.Row="1" SelectionChanged="lbAutok_SelectionChanged"/>
+        <!--<DataGrid x:Name="dgAutok" Grid.Column="1" Grid.Row="1"/>-->
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label Content="Id" />
+            <TextBlock x:Name="tbkId" />
+            
+            <Label Content="Márka" />
+            <TextBlock x:Name="tbkMarka" />
+
+            <Label Content="Típus" />
+            <TextBlock x:Name="tbkTipus" />
+
+            <Label Content="Szín" />
+            <TextBlock x:Name="tbkSzin" />
+            
+            <Label Content="Évjárat" />
+            <TextBlock x:Name="tbkEvjarat" />
+            
+            <Label Content="Műszaki" />
+            <TextBlock x:Name="tbkMuszaki" />
+
+            <Label Content="Aktív" />
+            <CheckBox x:Name="cbxAktiv" Content="Aktív" />
+
+
+
+        </StackPanel>
+
     </Grid>
 </Window>
