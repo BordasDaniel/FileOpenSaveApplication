@@ -1,0 +1,6 @@
+Id;Márka;Tipu;Szin;Évjárat;Muszaki;Aktiv
+1;Opel;Astra;fehér;2000;2025-12-12;True
+2;Ford;Focus;kék;2001;2013-03-20;False
+3;Nissan;Micra;piros;2002;2027-06-30;True
+4;Honda;Civic;zöld;2003;2024-01-03;False
+5;Toyota;Corolla;fehér;2004;2025-10-11;True
