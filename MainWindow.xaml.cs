@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Collections.Generic;
 using FileOpenSaveApplication.Models;
+using Microsoft.Win32;
 
 namespace FileOpenSaveApplication
 {
@@ -21,8 +22,7 @@ namespace FileOpenSaveApplication
         public MainWindow()
         {
             InitializeComponent();
-            string allomany = "autok.txt";
-            Beolvas(allomany);
+            
         }
 
         private void Beolvas(string allomany)
@@ -36,7 +36,7 @@ namespace FileOpenSaveApplication
 
                     while ((sor = olvas.ReadLine()) != null)
                     {
-                        autok.Add(new Models.Auto(sor));
+                        autok.Add(new(sor));
                     }
                 }
                 MessageBox.Show("Sikeres beolvasás!");
@@ -53,6 +53,21 @@ namespace FileOpenSaveApplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Hiba történt: {ex.Message}");
+            }
+        }
+
+        private void Beolvasas_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new();
+            fileDialog.Filter = "Szöveges fájlok|*.txt|CSV fájlok|*.csv|Összes fájl|*.*";
+            
+            if (fileDialog.ShowDialog().Value)
+            {
+                Beolvas(fileDialog.FileName);
+            }
+            else
+            {
+                MessageBox.Show("Nincs kiválasztott állomány!");
             }
         }
     }
